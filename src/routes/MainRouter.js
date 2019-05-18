@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
-import NotFound from "./screens/NotFound";
-import Home from "./screens/Home";
-import Login from "./screens/Login";
-import Protected from "./screens/Protected";
+import NotFound from "../screens/NotFound";
+import Home from "../screens/Home";
+import Login from "../screens/Login";
+import Protected from "../screens/Protected";
 
 const MainRouter = () => (
     <Switch>
