@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './PrivateRoute/container';
 import NotFound from "../screens/NotFound";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
