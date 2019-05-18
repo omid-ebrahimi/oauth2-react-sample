@@ -3,7 +3,7 @@ import {Route, Switch} from "react-router-dom";
 import PrivateRoute from './PrivateRoute/container';
 import NotFound from "../screens/NotFound";
 import Home from "../screens/Home";
-import Login from "../screens/Login";
+import Login from "../screens/Login/container";
 import Protected from "../screens/Protected";
 
 const MainRouter = () => (
