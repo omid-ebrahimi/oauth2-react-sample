@@ -1,8 +1,12 @@
-import {configureStore} from 'redux-starter-kit'
-import {reducer} from './reducer'
+import {configureStore} from 'redux-starter-kit';
+import {persistStore} from 'redux-persist';
+import {persistedReducer} from './reducer';
 
 /* global process */
 export const store = configureStore({
-    reducer,
+    reducer: persistedReducer,
+    middleware: [], // to avoid default middleware
     devTools: process.env.NODE_ENV !== 'production'
 });
+
+export const persistor = persistStore(store);
