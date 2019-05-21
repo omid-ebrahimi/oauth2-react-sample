@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Header = ({logout}) => {
+const Header = ({isAuthenticated, logout}) => {
     return (
         <header>
-            <button onClick={logout}>Logout</button>
+            {
+                isAuthenticated && <button onClick={logout}>Logout</button>
+            }
         </header>
     );
 };
