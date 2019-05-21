@@ -4,7 +4,7 @@ import Provider from '../data/store/provider'
 import Header from './components/Header/container';
 import Main from "./components/Main";
 
-function Index() {
+function App() {
     return (
         <Provider>
             <BrowserRouter>
@@ -15,4 +15,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default App;
