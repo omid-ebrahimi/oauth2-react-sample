@@ -1,17 +1,15 @@
 import React from 'react';
 import {BrowserRouter} from "react-router-dom";
-import MainRouter from "../routes/MainRouter";
 import Provider from '../data/store/provider'
 import Header from './components/Header/container';
+import Main from "./components/Main";
 
 function App() {
     return (
         <Provider>
             <BrowserRouter>
                 <Header/>
-                <main>
-                    <MainRouter/>
-                </main>
+                <Main/>
             </BrowserRouter>
         </Provider>
     );
