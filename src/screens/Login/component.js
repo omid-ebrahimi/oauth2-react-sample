@@ -21,7 +21,7 @@ class Login extends Component {
         const user = await this.auth.owner.getToken(username, password);
         console.log(user);
 
-        this.props.login();
+        this.props.login(user.data);
         this.setState({redirectToReferrer: true});
     };
 

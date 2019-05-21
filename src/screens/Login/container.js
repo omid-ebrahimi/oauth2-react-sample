@@ -4,8 +4,8 @@ import Login from './component';
 
 const mapDispatchToProps = dispatch => {
 
-    function login() {
-        dispatch(user.actions.login());
+    function login(token) {
+        dispatch(user.actions.login(token));
     }
 
     return {

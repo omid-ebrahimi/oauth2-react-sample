@@ -1,22 +1,21 @@
 import {createSlice} from 'redux-starter-kit'
 
-// Reducers
-const login = (state) => {
-    state.isAuthenticated = true;
-};
-
-const logout = (state) => {
-    state.isAuthenticated = false;
+const initialState = {
+    token: {
+        access_token: null,
+        refresh_token: null,
+        token_type: null,
+        expires_in: null,
+        scope: null
+    }
 };
 
 // Slice
 export const user = createSlice({
     slice: 'user',
-    initialState: {
-        isAuthenticated: false,
-    },
+    initialState,
     reducers: {
-        login,
-        logout
+        login: (state, action) => ({...state, token: action.payload}),
+        logout: () => initialState
     }
 });
