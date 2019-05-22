@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
-import ClientOAuth2 from 'client-oauth2';
+import {oauth} from '../../api/oauth';
 
 class Login extends Component {
     state = {
@@ -9,18 +9,9 @@ class Login extends Component {
         redirectToReferrer: false
     };
 
-    auth = new ClientOAuth2({
-        clientId: 'my-trusted-client',
-        clientSecret: 'secret',
-        accessTokenUri: 'http://192.168.1.59:4411/oauth/token'
-    });
-
     login = async () => {
         const {username, password} = this.state;
-
-        const token = await this.auth.owner.getToken(username, password);
-        console.log(token);
-
+        const token = await oauth.owner.getToken(username, password);
         this.props.setToken(token);
         this.setState({redirectToReferrer: true});
     };

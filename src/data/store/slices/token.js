@@ -10,12 +10,18 @@ const initialState = {
     }
 };
 
+function setToken(state, action) {
+    const token = action.payload;
+    token.data.expires_in = token.expires;
+    return token;
+}
+
 // Slice
 export const token = createSlice({
     slice: 'token',
     initialState,
     reducers: {
-        setToken: (state, action) => action.payload,
+        setToken,
         logout: () => initialState
     }
 });
