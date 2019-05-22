@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import {user} from '../../data/store/slices';
+import {token} from '../../data/store/slices';
 import Login from './component';
 
 const mapDispatchToProps = dispatch => {
 
-    function setToken(token) {
-        dispatch(user.actions.setToken(token));
+    function setToken(data) {
+        dispatch(token.actions.setToken(data));
     }
 
     return {

@@ -1,7 +1,7 @@
 import {createSlice} from 'redux-starter-kit'
 
 const initialState = {
-    token: {
+    data: {
         access_token: null,
         refresh_token: null,
         token_type: null,
@@ -11,11 +11,11 @@ const initialState = {
 };
 
 // Slice
-export const user = createSlice({
-    slice: 'user',
+export const token = createSlice({
+    slice: 'token',
     initialState,
     reducers: {
-        setToken: (state, action) => ({...state, token: action.payload}),
+        setToken: (state, action) => action.payload,
         logout: () => initialState
     }
 });
