@@ -3,9 +3,9 @@ import PrivateRoute from './component';
 
 const mapStateToProps = state => {
     const {token} = state;
-    // Todo: check if token expired
     const isAuthenticated = token && token.data.access_token;
-    return {isAuthenticated}
+    const expired = isAuthenticated && token.expiryDate.getSeconds() <= new Date().getSeconds();
+    return {isAuthenticated, expired}
 };
 
 export default connect(mapStateToProps)(PrivateRoute);

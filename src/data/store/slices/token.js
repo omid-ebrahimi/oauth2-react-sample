@@ -7,12 +7,13 @@ const initialState = {
         token_type: null,
         expires_in: null,
         scope: null
-    }
+    },
+    expiryDate: null
 };
 
 function setToken(state, action) {
     const token = action.payload;
-    token.data.expires_in = token.expires;
+    token.expiryDate = token.expires;
     return token;
 }
 

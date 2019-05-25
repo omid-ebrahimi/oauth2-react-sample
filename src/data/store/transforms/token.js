@@ -4,16 +4,18 @@ import {oauth} from '../../../api/oauth';
 export const tokenTransform = createTransform(
 
     (inboundToken, key = 'token') => {
-        const {data} = inboundToken;
-        return {data};
+        const {data, expiryDate} = inboundToken;
+        return {data, expiryDate};
     },
 
     (outboundToken, key = 'token') => {
         const {data} = outboundToken;
+        const expiryDate = new Date(outboundToken.expiryDate);
 
-        data.expires_in = new Date(data.expires_in).getSeconds() - new Date().getSeconds();
+        data.expires_in = expiryDate.getSeconds() - new Date().getSeconds();
         const token = oauth.createToken(data);
-        token.data.expires_in = token.expires;
+        token.expires = expiryDate;
+        token.expiryDate = expiryDate;
 
         return token;
     },
