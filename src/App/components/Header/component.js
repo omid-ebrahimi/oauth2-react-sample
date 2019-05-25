@@ -1,10 +1,14 @@
 import React from 'react';
 
-const Header = ({isAuthenticated, logout}) => {
+const Header = ({isAuthenticated, logout, data, refreshToken}) => {
     return (
         <header>
             {
-                isAuthenticated && <button onClick={logout}>Logout</button>
+                isAuthenticated &&
+                <>
+                    <button onClick={logout}>Logout</button>
+                    <button onClick={() => refreshToken(data)}>Refresh</button>
+                </>
             }
         </header>
     );
