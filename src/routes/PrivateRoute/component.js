@@ -3,19 +3,21 @@ import PropTypes from "prop-types"
 import {Route, Redirect} from "react-router-dom";
 
 class PrivateRoute extends Component {
-    render() {
-        const {component: Component, isAuthenticated, tokenExpired, refreshToken, data, ...rest} = this.props;
-
+    componentDidMount() {
+        const {tokenExpired, refreshToken, data} = this.props;
         if (tokenExpired) refreshToken(data);
+    }
 
+    render() {
+        const {component: Component, isAuthenticated, tokenExpired, ...rest} = this.props;
         return (
             <Route
                 {...rest}
                 render={props =>
-                    isAuthenticated ? (
-                        <Component {...props} />
-                    ) : (
-                        <Redirect to={{pathname: "/login", state: {from: props.location}}}/>
+                    !tokenExpired &&
+                    (
+                        isAuthenticated ? (<Component {...props} />)
+                            : (<Redirect to={{pathname: "/login", state: {from: props.location}}}/>)
                     )
                 }
             />
@@ -26,8 +28,8 @@ class PrivateRoute extends Component {
 export default PrivateRoute;
 
 PrivateRoute.propTypes = {
-  data: PropTypes.object.isRequired,
-  expired: PropTypes.bool,
-  isAuthenticated: PropTypes.bool.isRequired,
-  refreshToken: PropTypes.func.isRequired
+    data: PropTypes.object.isRequired,
+    expired: PropTypes.bool,
+    isAuthenticated: PropTypes.bool.isRequired,
+    refreshToken: PropTypes.func.isRequired
 };
