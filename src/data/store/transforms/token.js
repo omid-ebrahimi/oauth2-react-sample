@@ -12,7 +12,7 @@ export const tokenTransform = createTransform(
         const {data} = outboundToken;
         const expiryDate = new Date(outboundToken.expiryDate);
 
-        data.expires_in = expiryDate.getSeconds() - new Date().getSeconds();
+        data.expires_in = (expiryDate.getTime() - new Date().getTime()) / 1000;
         const token = oauth.createToken(data);
         token.expires = expiryDate;
         token.expiryDate = expiryDate;
