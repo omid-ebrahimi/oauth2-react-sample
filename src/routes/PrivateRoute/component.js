@@ -14,7 +14,6 @@ class PrivateRoute extends Component {
             <Route
                 {...rest}
                 render={props =>
-                    !tokenMustRefresh &&
                     (
                         isAuthenticated ? (<Component {...props} />)
                             : (<Redirect to={{pathname: "/login", state: {from: props.location}}}/>)
