@@ -12,9 +12,8 @@ const initialState = {
 };
 
 function setToken(state, action) {
-    const token = action.payload;
-    token.expiryDate = token.expires;
-    return token;
+    const {data, expiryDate} = action.payload;
+    return {data, expiryDate};
 }
 
 // Slice

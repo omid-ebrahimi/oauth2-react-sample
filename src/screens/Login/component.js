@@ -12,7 +12,7 @@ class Login extends Component {
     login = async () => {
         const {username, password} = this.state;
         const token = await oauth.owner.getToken(username, password);
-        this.props.setToken(token);
+        this.props.setToken(token.data, token.expires);
         this.setState({redirectToReferrer: true});
     };
 

@@ -4,8 +4,8 @@ import Login from './component';
 
 const mapDispatchToProps = dispatch => {
 
-    function setToken(data) {
-        dispatch(token.actions.setToken(data));
+    function setToken(data, expiryDate) {
+        dispatch(token.actions.setToken({data, expiryDate}));
     }
 
     return {

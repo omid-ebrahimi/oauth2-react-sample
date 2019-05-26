@@ -1,5 +1,4 @@
 import {createTransform} from 'redux-persist';
-import {oauth} from '../../../api/oauth';
 
 export const tokenTransform = createTransform(
 
@@ -12,12 +11,7 @@ export const tokenTransform = createTransform(
         const {data} = outboundToken;
         const expiryDate = new Date(outboundToken.expiryDate);
 
-        data.expires_in = (expiryDate.getTime() - new Date().getTime()) / 1000;
-        const token = oauth.createToken(data);
-        token.expires = expiryDate;
-        token.expiryDate = expiryDate;
-
-        return token;
+        return {data, expiryDate};
     },
     // define which reducers this transform gets called for.
     {whitelist: ['token']}

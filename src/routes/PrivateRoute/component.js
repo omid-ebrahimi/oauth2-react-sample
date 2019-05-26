@@ -4,17 +4,17 @@ import {Route, Redirect} from "react-router-dom";
 
 class PrivateRoute extends Component {
     componentDidMount() {
-        const {tokenExpired, refreshToken, data} = this.props;
-        if (tokenExpired) refreshToken(data);
+        const {tokenMustRefresh, refreshToken, tokenData, expiryDate} = this.props;
+        if (tokenMustRefresh) refreshToken(tokenData, expiryDate);
     }
 
     render() {
-        const {component: Component, isAuthenticated, tokenExpired, ...rest} = this.props;
+        const {component: Component, isAuthenticated, tokenMustRefresh, ...rest} = this.props;
         return (
             <Route
                 {...rest}
                 render={props =>
-                    !tokenExpired &&
+                    !tokenMustRefresh &&
                     (
                         isAuthenticated ? (<Component {...props} />)
                             : (<Redirect to={{pathname: "/login", state: {from: props.location}}}/>)
@@ -28,7 +28,7 @@ class PrivateRoute extends Component {
 export default PrivateRoute;
 
 PrivateRoute.propTypes = {
-    data: PropTypes.object.isRequired,
+    tokenData: PropTypes.object.isRequired,
     expired: PropTypes.bool,
     isAuthenticated: PropTypes.bool.isRequired,
     refreshToken: PropTypes.func.isRequired
