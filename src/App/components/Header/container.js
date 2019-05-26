@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import Header from './component';
 import {token} from "../../../data/store/slices";
-import {createToken} from "../../../api/oauth";
+import {createToken, isAuthError} from "../../../api/oauth";
 
 const mapStateToProps = state => {
     const {token: {data, expiryDate}} = state;
@@ -17,8 +17,7 @@ const mapDispatchToProps = dispatch => {
         tokenObj.refresh().then(({data, expires}) => {
             dispatch(token.actions.setToken({data, expiryDate: expires}))
         }).catch((e) => {
-                // dispatch(token.actions.logout());
-                console.log(e)
+                isAuthError(e) && dispatch(token.actions.logout());
             }
         )
     }
