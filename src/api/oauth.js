@@ -20,5 +20,4 @@ const createToken = (tokenData, expiryDate) => {
 
 const isAuthError = (e) => e.code === 'EAUTH';
 
-
 export {oauth, createToken, isAuthError}

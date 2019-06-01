@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function NoMatch({location}) {
     return (
@@ -10,3 +11,7 @@ export default function NoMatch({location}) {
         </section>
     );
 }
+
+NoMatch.propTypes = {
+  location: PropTypes.object.isRequired
+};

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {oauth} from '../../api/oauth';
 
@@ -32,6 +33,9 @@ class Login extends Component {
     }
 }
 
-Login.propTypes = {};
+Login.propTypes = {
+  location: PropTypes.object,
+  setToken: PropTypes.func.isRequired
+};
 
 export default Login;
