@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Header from './component';
-import {token} from "../../../data/store/slices";
+import {token} from "../../data/store/slices";
 import {createToken, isAuthError} from "../../../api/oauth";
 
 const mapStateToProps = state => {

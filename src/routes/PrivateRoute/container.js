@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {token} from '../../data/store/slices';
+import {token} from '../../app/data/store/slices';
 import PrivateRoute from './component';
 import {createToken, isAuthError} from '../../api/oauth';
 

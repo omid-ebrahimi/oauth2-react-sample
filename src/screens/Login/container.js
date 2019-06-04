@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {token} from '../../data/store/slices';
+import {token} from '../../app/data/store/slices';
 import Login from './component';
 
 const mapDispatchToProps = dispatch => {
